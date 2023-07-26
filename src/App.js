@@ -3,6 +3,7 @@ import "./App.scss";
 import { Container } from "@material-ui/core";
 import Map from "./map/Map";
 import "leaflet/dist/leaflet.css";
+import { Button } from 'antd';
 
 export default function App() {
 
@@ -13,6 +14,7 @@ export default function App() {
         <input type="radio" name="radAnswer"/> <span>Route №1</span>
         <input type="radio" name="radAnswer"/> <span>Route №2</span>
         <input type="radio" name="radAnswer"/> <span>Route №3</span>
+        <Button size="middle" type="primary">кнопка</Button>
       </Container>
       <Container disableGutters maxWidth="sm">
        <Map />
