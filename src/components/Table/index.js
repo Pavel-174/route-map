@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Table as RadioTable } from "antd";
 import { useDispatch, useSelector } from "react-redux";
 import { routerActions } from "../../features/router/routerSlice";
@@ -9,10 +9,10 @@ import {
 
 const Table = () => {
   const dispatch = useDispatch();
-  const [selectedRowKeys, setSelectedRowKeys] = React.useState([]);
+  const [selectedRowKeys, setSelectedRowKeys] = useState([]);
   const requests = useSelector(selectListRequests);
 
-  React.useEffect(() => {
+  useEffect(() => {
     dispatch(requestListActions.fetchRequestList());
   }, [dispatch]);
 
@@ -46,7 +46,7 @@ const Table = () => {
 
   return (
     <RadioTable
-      onRow={(record, index, Radio) => {
+      onRow={(record, index) => {
         return {
           onClick: () => {
             dispatch(

@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import {
   MapContainer,
   TileLayer,
@@ -13,10 +13,10 @@ import { selectRoute } from "../../features/router/routerSlice";
 
 const Map = ({ center, zoom }) => {
   const route = useSelector(selectRoute);
-  const [points, setPoints] = React.useState([]);
-  const [originMarker, setOriginMarker] = React.useState(null);
-  const [destinationMarker, setDestinationMarker] = React.useState(null);
-  const [bounds, setBounds] = React.useState([]);
+  const [points, setPoints] = useState([]);
+  const [originMarker, setOriginMarker] = useState(null);
+  const [destinationMarker, setDestinationMarker] = useState(null);
+  const [bounds, setBounds] = useState([]);
 
   function MapEvents() {
     useMapEvent("click", (e) => {

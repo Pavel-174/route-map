@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 import { Outlet } from "react-router-dom";
 import { Layout as LayoutAntd } from "antd";
 import CustomTable from "../Table";
@@ -7,7 +7,7 @@ import Draggable from "../Draggable";
 const { Content, Sider } = LayoutAntd;
 
 function LayoutMain() {
-  const resizableRef = React.useRef(null)
+  const resizableRef = useRef(null)
 
   return (
     <LayoutAntd>
