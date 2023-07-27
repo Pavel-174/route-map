@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Table as RadioTable } from "antd";
+import { Divider, Table as RadioTable } from "antd";
 import { useDispatch, useSelector } from "react-redux";
 import { routerActions } from "../../features/router/routerSlice";
 import {
@@ -17,6 +17,13 @@ const Table = () => {
   }, [dispatch]);
 
   const columns = [
+    {
+      title: " ",
+      dataIndex: "key",
+      render: (text, record) => {
+        return <span>{record.key}</span>;
+      },
+    },
     {
       title: "Routes",
       dataIndex: "name",
@@ -45,23 +52,32 @@ const Table = () => {
   ];
 
   return (
-    <RadioTable
-      onRow={(record, index) => {
-        return {
-          onClick: () => {
-            dispatch(
-              routerActions.fetchRoute({
-                original: record.original,
-                destination: record.destination,
-              })
-            );
-            setSelectedRowKeys([index + ""]);
-          },
-        };
-      }}
-      columns={columns}
-      dataSource={requests}
-    ></RadioTable>
+    <>
+      <RadioTable
+        pagination = {false}
+        onRow={(record, index) => {
+          return {
+            onClick: () => {
+              dispatch(
+                routerActions.fetchRoute({
+                  original: record.original,
+                  destination: record.destination,
+                  key: record.key,
+                })
+              );
+              setSelectedRowKeys([index + ""]);
+            },
+          };
+        }}
+        rowSelection={{
+          type: 'radio',
+        }}
+        columns={columns}
+        dataSource={requests}
+      >
+      </RadioTable>
+      <Divider />
+    </>
   );
 };
 
