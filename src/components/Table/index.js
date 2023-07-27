@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import { Divider, Table as RadioTable } from "antd";
 import { useDispatch, useSelector } from "react-redux";
 import { routerActions } from "../../features/router/routerSlice";
@@ -9,7 +9,6 @@ import {
 
 const Table = () => {
   const dispatch = useDispatch();
-  const [selectedRowKeys, setSelectedRowKeys] = useState([]);
   const requests = useSelector(selectListRequests);
 
   useEffect(() => {
@@ -65,7 +64,6 @@ const Table = () => {
                   key: record.key,
                 })
               );
-              setSelectedRowKeys([index + ""]);
             },
           };
         }}

@@ -4,7 +4,7 @@ import { Layout as LayoutAntd } from "antd";
 import CustomTable from "../Table";
 import Draggable from "../Draggable";
 
-const { Content, Sider } = LayoutAntd;
+const { Content } = LayoutAntd;
 
 function LayoutMain() {
   const resizableRef = useRef(null)
